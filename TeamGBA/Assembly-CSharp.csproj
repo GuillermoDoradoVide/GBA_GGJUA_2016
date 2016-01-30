@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Escena.cs" />
      <Compile Include="Assets\Scripts\EstadoJuego.cs" />
      <Compile Include="Assets\Scripts\LuzScript.cs" />
+     <Compile Include="Assets\Scripts\Objetos.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ScriptNuevaPartida.cs" />
      <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />

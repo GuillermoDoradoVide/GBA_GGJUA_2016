@@ -18,7 +18,6 @@ public class Player : MonoBehaviour {
 	float angle = 0.0f;
 	Vector3 cross;
 
-
 	Rigidbody[] rigidbodys;
 
 	// Use this for initialization
@@ -116,7 +115,7 @@ public class Player : MonoBehaviour {
 
 		//float result = state.ThumbSticks.Left.X;
 
-		Debug.Log(Mathf.Asin(state.ThumbSticks.Left.X));
+		//Debug.Log(Mathf.Asin(state.ThumbSticks.Left.X));
 
 		angle = Vector3.Angle(destino, origen);
 		cross = Vector3.Cross(destino, origen);
@@ -127,5 +126,10 @@ public class Player : MonoBehaviour {
 		transform.Rotate (0, state.ThumbSticks.Right.X * 50.0f * Time.deltaTime, 0);
 
 
+	}
+
+	void OnCollisionEnter(Collision other) {
+		Debug.Log ( other.gameObject.name );
+		//Destroy(other.gameObject);
 	}
 }
