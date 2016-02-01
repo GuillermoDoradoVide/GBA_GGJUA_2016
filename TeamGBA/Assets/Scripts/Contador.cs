@@ -2,45 +2,54 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class Contador : MonoBehaviour {
 	
-	float tiempoRestante = 10;
+	private Player p;
+	public float tiempoRestante;
 	bool esNoche = false;
+	double decimalValue;
+	float tiempoRestante_aux; 
+
+	int nochesPasadas;
 
 	// Use this for initialization
 	void Start () {
-	
+		p = GameObject.Find ("Player").GetComponent<Player>();
+		tiempoRestante_aux = tiempoRestante;
+		nochesPasadas = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(tiempoRestante > 0){
-			tiempoRestante -= Time.deltaTime;
-			double decimalValue = Math.Ceiling(tiempoRestante);
+
+		if(tiempoRestante_aux > 0){
+			tiempoRestante_aux -= Time.deltaTime;
+			decimalValue = Math.Ceiling(tiempoRestante_aux);
 			GameObject.Find ("Cuenta").GetComponent<Text> ().text = decimalValue.ToString();
 			if (esNoche == false) {
-				GameObject.Find ("Point light").GetComponent<Light> ().intensity = (float)tiempoRestante; //.intensity = 0.0f; GetComponent<Text> ().text = decimalValue.ToString();
+				GameObject.Find ("Point light").GetComponent<Light> ().intensity = (float)tiempoRestante_aux; //.intensity = 0.0f; GetComponent<Text> ().text = decimalValue.ToString();
 			} else {
-				GameObject.Find ("Point light").GetComponent<Light> ().intensity = 10.0f-(float)tiempoRestante; //.intensity = 0.0f; GetComponent<Text> ().text = decimalValue.ToString();
+				GameObject.Find ("Point light").GetComponent<Light> ().intensity = tiempoRestante - (float)tiempoRestante_aux; //.intensity = 0.0f; GetComponent<Text> ().text = decimalValue.ToString();
 			}
 		}
 		else
 		{
-
 			if(esNoche == true){
 				esNoche = false;
 				GameObject.Find ("Texto").GetComponent<Text> ().text = "Noche en:";
+				p.cambiarPersonajeDia ();
 			}else{
 				esNoche = true;
 				GameObject.Find ("Texto").GetComponent<Text> ().text = "Día en:";
+				p.cambiarPersonajeNoche ();
 			}
-			tiempoRestante = 10;
-//			//Debug.Log ("Voy a subir el numero de ronda de " + EstadoJuego.estadoJuego.numRonda + " a " + (EstadoJuego.estadoJuego.numRonda+1).ToString());
-//			EstadoJuego.estadoJuego.numRonda++;
-//			if(EstadoJuego.estadoJuego.numRonda != 4){
-//				Application.LoadLevel(EstadoJuego.estadoJuego.arrayNiveles[(EstadoJuego.estadoJuego.numRonda-1)]);
-//			}
+			tiempoRestante_aux = tiempoRestante;
 		}
+	}
+
+	public bool getEsNoche(){
+		return esNoche;
 	}
 }

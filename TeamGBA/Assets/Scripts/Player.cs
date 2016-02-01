@@ -2,19 +2,38 @@
 using System.Collections;
 using XInputDotNetPure;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using System;
 
 public class Player : MonoBehaviour {
 
 	public Vector2 ForceMultiplier;
+	public Animator animator;
+	public float speed = 2.5f;
+	
+	float vida = 100.0f;
+	float movHorizontal = 0.0f;
+	float movVertical = 0.0f;
 
 	bool playerIndexSet = false;
+	bool siendoDanyado = false;
+	bool esNoche = false;
+	bool onGround = true;
+
+	float r_aux;
+	float g_aux;
+	float b_aux;
+	float a_aux;
+
+	int numReliquias;
+
 	PlayerIndex playerIndex;
 	GamePadState state;
 	GamePadState prevState;
+	Rigidbody rb;
 
 	private Transform m_Transform;
 
-	float speed = 2.5f;
 	float angle = 0.0f;
 	Vector3 cross;
 
@@ -22,21 +41,44 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
 		m_Transform = GetComponent<Transform>();
 		rigidbodys = this.GetComponentsInChildren<Rigidbody> ();
+		animator = GetComponent<Animator>();
+		numReliquias = 0;
+
+		//Debug.Log(GetComponent<Renderer> ().material.color);
+		//GameObject.Find ("Arma").GetComponent<Animator> ().Stop ();
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetButtonDown ("Fire1")) {
-			Debug.Log ("Boton pulsado 1");
-		}
-		if (Input.GetButtonDown ("Fire2")) {
-			Debug.Log ("Boton pulsado 2");
-		}
-		if (Input.GetButtonDown ("Fire3")) {
-			Debug.Log ("Boton pulsado 3");
+		animator.SetBool("jump", onGround);
+
+		if ((prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed) || Input.GetKey ("space")) {//(Input.GetButtonDown ("Fire1")) {
+			if (esNoche) {
+				//Atacar
+				if (animator.GetCurrentAnimatorStateInfo (0).IsName ("attack") == false) {
+					animator.SetTrigger ("att");
+					GameObject.Find ("ColliderArma").GetComponent<Transform> ().position = new Vector3 (GameObject.Find ("ColliderArma").GetComponent<Transform> ().position.x, 3.0f, GameObject.Find ("ColliderArma").GetComponent<Transform> ().position.z);
+				}
+
+			} else if (onGround == true) {
+				//Saltar
+				onGround = false;
+
+				for (int i = 0; i < rigidbodys.Length; i++) {
+					rb = rigidbodys [i];
+					if (rb) {
+						Vector3 f = new Vector3 (1.0f, 1.4f * ForceMultiplier.y, 1.0f);
+						rb.AddForce (f);
+					}
+				}
+			}
+		} else if (state.Buttons.A == ButtonState.Released || !Input.GetKey ("space")) {
+			GameObject.Find ("ColliderArma").GetComponent<Transform> ().position = new Vector3 (GameObject.Find ("ColliderArma").GetComponent<Transform> ().position.x, 7.0f, GameObject.Find ("ColliderArma").GetComponent<Transform> ().position.z);
 		}
 
 		if (!playerIndexSet || !prevState.IsConnected)
@@ -57,79 +99,100 @@ public class Player : MonoBehaviour {
 		prevState = state;
 		state = GamePad.GetState(playerIndex);
 
-		// Detect if a button was pressed this frame
-		if (prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed)
-		{
-			GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, 1.0f);
-
-			for (int i = 0; i < rigidbodys.Length; i++) {
-				Rigidbody rb = rigidbodys [i];
-				if (rb) {
-					//if (i == 1) {
-					Vector3 f = new Vector3 (1.0f, 1.0f * ForceMultiplier.y, 1.0f);
-						//if (!onGround && f.y > 0)
-						//	f.y = 0;
-						rb.AddForce (f);
-					//}
-				}
-			}
-
-
-
-			//m_Transform.position += transform.up * Time.deltaTime * 10.0f;
-
-		}
-		// Detect if a button was released this frame
-		if (prevState.Buttons.A == ButtonState.Pressed && state.Buttons.A == ButtonState.Released)
-		{
-			GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-		}
-
 		// Set vibration according to triggers
 		GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
 
-		// Make the current object turn
-		m_Transform.Translate(Vector3.forward * Time.deltaTime * state.ThumbSticks.Left.Y * speed);
-		m_Transform.Translate(Vector3.right * Time.deltaTime * state.ThumbSticks.Left.X * speed);
 
-//		for (int i = 0; i < rigidbodys.Length; i++) {
-//			Rigidbody rb = rigidbodys [i];
-//			if (rb) {
-//				
-//				float moveHorizontal = state.ThumbSticks.Left.X * 25.0f;
-//				float moveVertical = state.ThumbSticks.Left.Y * 25.0f;
-//
-//				Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-//
-//				rb.AddForce (movement * speed);
-//			}
-//		}
-		/////////PRUEBAS
-		float valor = 0;
+		movHorizontal = state.ThumbSticks.Left.X;
+		movVertical = state.ThumbSticks.Left.Y;
 
-		//state.ThumbSticks.Left.X;
-		//state.ThumbSticks.Left.Y;
+		if (Input.GetKey ("a")) {
+			movHorizontal = -1;
+		}
+		if (Input.GetKey ("d")) {
+			movHorizontal = 1;
+		}
+		if (Input.GetKey ("s")) {
+			movVertical = -1;
+		}
+		if (Input.GetKey ("w")) {
+			movVertical = 1;
+		}
 
-		Vector3 destino = new Vector3 (state.ThumbSticks.Left.X, state.ThumbSticks.Left.Y, 1.0f);
-		Vector3 origen = new Vector3 (0.0f, 0.0f, 1.0f);
+		animator.SetFloat("velocity", Math.Abs(movVertical) + Math.Abs(movHorizontal));
 
-		//float result = state.ThumbSticks.Left.X;
+		m_Transform.Translate(Time.deltaTime * movHorizontal * speed, 0.0f, Time.deltaTime * movVertical * speed, Space.World);
 
-		//Debug.Log(Mathf.Asin(state.ThumbSticks.Left.X));
+		if (!(state.ThumbSticks.Left.Y == 0.0f && state.ThumbSticks.Left.X == 0.0f)) {
+			m_Transform.localRotation = Quaternion.Euler (0.0f, (Mathf.Atan2 (state.ThumbSticks.Left.Y, -state.ThumbSticks.Left.X) * Mathf.Rad2Deg), 0.0f);
+			if(!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().Play();
+			//m_Transform.position = new Vector3(m_Transform.position.x, m_Transform.position.y, 100.0f);
+		}
 
-		angle = Vector3.Angle(destino, origen);
-		cross = Vector3.Cross(destino, origen);
-
-		if (cross.y < 0)
-			angle = -angle;
-
-		transform.Rotate (0, state.ThumbSticks.Right.X * 50.0f * Time.deltaTime, 0);
-
+		if (siendoDanyado == true) {
+			if (GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color.r < 0.8f)
+				r_aux = GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color.r + 0.05f;
+			if (GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color.g < 0.8f)
+				g_aux = GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color.g + 0.05f;
+			if (GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color.b < 0.8f)
+				b_aux = GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color.b + 0.05f;
+			if (GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color.a < 1.0f)
+				a_aux = GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color.a + 0.05f;
+			
+			GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color = new Color(r_aux, g_aux, b_aux, a_aux);
+		}
 
 	}
 
 	void OnCollisionEnter(Collision other) {
-		Debug.Log ( other.gameObject.name );
-		//Destroy(other.gameObject);
+
+		if (other.gameObject.tag.Equals ("Pickeable")) {
+
+			string text = "Item " + other.gameObject.name.Split (' ') [1];
+
+			Image image;
+			image = GameObject.Find (text).GetComponent<Image> ();
+				
+			Color c = image.color;
+			c.a = 1.0f;
+			image.color = c;
+				
+			Destroy (other.gameObject);
+
+			numReliquias++;
+
+			if(numReliquias == 5){
+				Application.LoadLevel("MainMenu");
+			}
+
+		} else {
+			onGround = true;
+		}
+	}
+
+	public void cambiarPersonajeNoche(){
+		//GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+		esNoche = true;
+	}
+
+	public void cambiarPersonajeDia(){
+		//GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+		esNoche = false;
+	}
+
+	public int recibirAtaque(){
+		GameObject.Find ("CubePlayer").GetComponent<SkinnedMeshRenderer>().material.color = new Color(0.8f, 0.0f, 0.0f, 0.5f);
+		siendoDanyado = true;
+
+		vida = vida - 5.0f;
+
+		GameObject.Find ("Barra").GetComponent<Transform> ().localScale = new Vector3((1.3f*vida)/100.0f, GameObject.Find ("Barra").GetComponent<Transform> ().localScale.y, GameObject.Find ("Barra").GetComponent<Transform> ().localScale.z);
+
+		if (vida <= 0) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 }
