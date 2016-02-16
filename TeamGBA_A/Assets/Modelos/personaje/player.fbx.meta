@@ -1,0 +1,372 @@
+fileFormatVersion: 2
+guid: adc2389c0b4570044b1577bffa764d14
+timeCreated: 1454226839
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone_end
+    100006: brazo.L
+    100008: brazo.R
+    100010: brazoI.L
+    100012: brazoI.L_end
+    100014: brazoI.R
+    100016: brazoI.R_end
+    100018: Cube
+    100020: Cube.001
+    100022: pierna.L
+    100024: pierna.L.001
+    100026: pierna.L.001_end
+    100028: pierna.R
+    100030: pierna.R.001
+    100032: pierna.R.001_end
+    100034: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone_end
+    400006: brazo.L
+    400008: brazo.R
+    400010: brazoI.L
+    400012: brazoI.L_end
+    400014: brazoI.R
+    400016: brazoI.R_end
+    400018: Cube
+    400020: Cube.001
+    400022: pierna.L
+    400024: pierna.L.001
+    400026: pierna.L.001_end
+    400028: pierna.R
+    400030: pierna.R.001
+    400032: pierna.R.001_end
+    400034: //RootNode
+    4300000: Cube.001
+    4300002: Cube
+    7400000: run
+    7400002: idle
+    7400004: attack
+    7400006: jump
+    9500000: //RootNode
+    13700000: Cube
+    13700002: Cube.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: run
+      takeName: Armature|ArmatureAction
+      firstFrame: 2
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/brazo.L
+        weight: 1
+      - path: Armature/brazo.L/brazoI.L
+        weight: 1
+      - path: Armature/brazo.L/brazoI.L/brazoI.L_end
+        weight: 1
+      - path: Armature/brazo.R
+        weight: 1
+      - path: Armature/brazo.R/brazoI.R
+        weight: 1
+      - path: Armature/brazo.R/brazoI.R/brazoI.R_end
+        weight: 1
+      - path: Armature/pierna.L
+        weight: 1
+      - path: Armature/pierna.L/pierna.L.001
+        weight: 1
+      - path: Armature/pierna.L/pierna.L.001/pierna.L.001_end
+        weight: 1
+      - path: Armature/pierna.R
+        weight: 1
+      - path: Armature/pierna.R/pierna.R.001
+        weight: 1
+      - path: Armature/pierna.R/pierna.R.001/pierna.R.001_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube.001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle
+      takeName: Armature|ArmatureAction
+      firstFrame: 60
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/brazo.L
+        weight: 1
+      - path: Armature/brazo.L/brazoI.L
+        weight: 1
+      - path: Armature/brazo.L/brazoI.L/brazoI.L_end
+        weight: 1
+      - path: Armature/brazo.R
+        weight: 1
+      - path: Armature/brazo.R/brazoI.R
+        weight: 1
+      - path: Armature/brazo.R/brazoI.R/brazoI.R_end
+        weight: 1
+      - path: Armature/pierna.L
+        weight: 1
+      - path: Armature/pierna.L/pierna.L.001
+        weight: 1
+      - path: Armature/pierna.L/pierna.L.001/pierna.L.001_end
+        weight: 1
+      - path: Armature/pierna.R
+        weight: 1
+      - path: Armature/pierna.R/pierna.R.001
+        weight: 1
+      - path: Armature/pierna.R/pierna.R.001/pierna.R.001_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube.001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack
+      takeName: Armature|ArmatureAction
+      firstFrame: 90
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/brazo.L
+        weight: 1
+      - path: Armature/brazo.L/brazoI.L
+        weight: 1
+      - path: Armature/brazo.L/brazoI.L/brazoI.L_end
+        weight: 1
+      - path: Armature/brazo.R
+        weight: 1
+      - path: Armature/brazo.R/brazoI.R
+        weight: 1
+      - path: Armature/brazo.R/brazoI.R/brazoI.R_end
+        weight: 1
+      - path: Armature/pierna.L
+        weight: 1
+      - path: Armature/pierna.L/pierna.L.001
+        weight: 1
+      - path: Armature/pierna.L/pierna.L.001/pierna.L.001_end
+        weight: 1
+      - path: Armature/pierna.R
+        weight: 1
+      - path: Armature/pierna.R/pierna.R.001
+        weight: 1
+      - path: Armature/pierna.R/pierna.R.001/pierna.R.001_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube.001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: jump
+      takeName: Armature|ArmatureAction
+      firstFrame: 120
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/brazo.L
+        weight: 1
+      - path: Armature/brazo.L/brazoI.L
+        weight: 1
+      - path: Armature/brazo.L/brazoI.L/brazoI.L_end
+        weight: 1
+      - path: Armature/brazo.R
+        weight: 1
+      - path: Armature/brazo.R/brazoI.R
+        weight: 1
+      - path: Armature/brazo.R/brazoI.R/brazoI.R_end
+        weight: 1
+      - path: Armature/pierna.L
+        weight: 1
+      - path: Armature/pierna.L/pierna.L.001
+        weight: 1
+      - path: Armature/pierna.L/pierna.L.001/pierna.L.001_end
+        weight: 1
+      - path: Armature/pierna.R
+        weight: 1
+      - path: Armature/pierna.R/pierna.R.001
+        weight: 1
+      - path: Armature/pierna.R/pierna.R.001/pierna.R.001_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube.001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
