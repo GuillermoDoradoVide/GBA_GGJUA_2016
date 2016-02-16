@@ -4,6 +4,7 @@ using System.Collections;
 public class Arma : MonoBehaviour {
 
 	private IAenemy e;
+	private GameObject destructible;
 
 	// Use this for initialization
 	void Start () {
@@ -28,5 +29,11 @@ public class Arma : MonoBehaviour {
 				Destroy(other.gameObject);
 			}
 		}
+		else if (other.gameObject.tag.Equals("destructible")) {
+
+				Destroy(other.gameObject);
+		}
+
+
 	}
 }
