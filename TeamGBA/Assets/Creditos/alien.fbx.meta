@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: 44f8029a53a92504b8f14bb847f623d7
+timeCreated: 1454237179
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: brazo.L
+    100004: brazo.R
+    100006: brazoF.L
+    100008: brazoF.L_end
+    100010: brazoF.R
+    100012: brazoF.R_end
+    100014: cabeza.L
+    100016: cabeza.L_end
+    100018: cabeza.R
+    100020: cabeza.R_end
+    100022: Cube
+    100024: huesos
+    100026: main
+    100028: pierna.L
+    100030: pierna.L.001
+    100032: pierna.L.002
+    100034: pierna.L.002_end
+    100036: pierna.R
+    100038: pierna.R.001
+    100040: pierna.R.002
+    100042: pierna.R.002_end
+    400000: //RootNode
+    400002: brazo.L
+    400004: brazo.R
+    400006: brazoF.L
+    400008: brazoF.L_end
+    400010: brazoF.R
+    400012: brazoF.R_end
+    400014: cabeza.L
+    400016: cabeza.L_end
+    400018: cabeza.R
+    400020: cabeza.R_end
+    400022: Cube
+    400024: huesos
+    400026: main
+    400028: pierna.L
+    400030: pierna.L.001
+    400032: pierna.L.002
+    400034: pierna.L.002_end
+    400036: pierna.R
+    400038: pierna.R.001
+    400040: pierna.R.002
+    400042: pierna.R.002_end
+    4300000: Cube
+    7400000: idle
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: huesos|huesosAction.001
+      firstFrame: 79
+      lastFrame: 149
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: huesos
+        weight: 1
+      - path: huesos/brazo.L
+        weight: 1
+      - path: huesos/brazo.L/brazoF.L
+        weight: 1
+      - path: huesos/brazo.L/brazoF.L/brazoF.L_end
+        weight: 1
+      - path: huesos/brazo.R
+        weight: 1
+      - path: huesos/brazo.R/brazoF.R
+        weight: 1
+      - path: huesos/brazo.R/brazoF.R/brazoF.R_end
+        weight: 1
+      - path: huesos/main
+        weight: 1
+      - path: huesos/main/cabeza.L
+        weight: 1
+      - path: huesos/main/cabeza.L/cabeza.L_end
+        weight: 1
+      - path: huesos/main/cabeza.R
+        weight: 1
+      - path: huesos/main/cabeza.R/cabeza.R_end
+        weight: 1
+      - path: huesos/main/pierna.L
+        weight: 1
+      - path: huesos/main/pierna.L/pierna.L.001
+        weight: 1
+      - path: huesos/main/pierna.L/pierna.L.001/pierna.L.002
+        weight: 1
+      - path: huesos/main/pierna.L/pierna.L.001/pierna.L.002/pierna.L.002_end
+        weight: 1
+      - path: huesos/main/pierna.R
+        weight: 1
+      - path: huesos/main/pierna.R/pierna.R.001
+        weight: 1
+      - path: huesos/main/pierna.R/pierna.R.001/pierna.R.002
+        weight: 1
+      - path: huesos/main/pierna.R/pierna.R.001/pierna.R.002/pierna.R.002_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
