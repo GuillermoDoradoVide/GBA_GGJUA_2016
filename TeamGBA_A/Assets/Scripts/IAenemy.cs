@@ -140,4 +140,8 @@ public class IAenemy : MonoBehaviour {
 			return 0;
 		}
 	}
-}
+
+	public void revivir(){
+		vida = 100.0f;
+	  }
+	}

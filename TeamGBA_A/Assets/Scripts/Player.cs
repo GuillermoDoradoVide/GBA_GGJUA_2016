@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 	public Vector2 ForceMultiplier;
 	public Animator animator;
 	public float speed = 2.5f;
+
+	public ParticleSystem picked;
 	
 	float vida = 100.0f;
 	float movHorizontal = 0.0f;
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour {
 		rigidbodys = this.GetComponentsInChildren<Rigidbody> ();
 		animator = GetComponent<Animator>();
 		numReliquias = 0;
+		picked.Stop ();
 
 		//Debug.Log(GetComponent<Renderer> ().material.color);
 		//GameObject.Find ("Arma").GetComponent<Animator> ().Stop ();
@@ -52,6 +55,13 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		if (picked.isPlaying) {
+
+
+			Debug.Log ("sep");
+
+		}
 
 		animator.SetBool("jump", onGround);
 
@@ -146,6 +156,10 @@ public class Player : MonoBehaviour {
 	void OnCollisionEnter(Collision other) {
 
 		if (other.gameObject.tag.Equals ("Pickeable")) {
+
+			picked.Clear ();
+			picked.Simulate (1.0f);
+			picked.Play ();
 
 			string text = "Item " + other.gameObject.name.Split (' ') [1];
 

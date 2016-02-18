@@ -29,9 +29,12 @@ public class Contador : MonoBehaviour {
 			decimalValue = Math.Ceiling(tiempoRestante_aux);
 			GameObject.Find ("Cuenta").GetComponent<Text> ().text = decimalValue.ToString();
 			if (esNoche == false) {
+				GameObject.Find ("night").GetComponent<Light> ().intensity = 0;
 				GameObject.Find ("Point light").GetComponent<Light> ().intensity = (float)tiempoRestante_aux; //.intensity = 0.0f; GetComponent<Text> ().text = decimalValue.ToString();
 			} else {
-				GameObject.Find ("Point light").GetComponent<Light> ().intensity = tiempoRestante - (float)tiempoRestante_aux; //.intensity = 0.0f; GetComponent<Text> ().text = decimalValue.ToString();
+				GameObject.Find ("night").GetComponent<Light> ().intensity = 5;
+
+				//GameObject.Find ("Point light").GetComponent<Light> ().intensity = tiempoRestante - (float)tiempoRestante_aux; //.intensity = 0.0f; GetComponent<Text> ().text = decimalValue.ToString();
 			}
 		}
 		else
