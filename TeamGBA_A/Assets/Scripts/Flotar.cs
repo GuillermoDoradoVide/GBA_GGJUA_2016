@@ -15,9 +15,9 @@ public class Flotar : MonoBehaviour {
 	void Start () {
 		m_Transform = GetComponent<Transform>();
 		yini = m_Transform.position.y;
-		yfin = yini - 0.5;
+		yfin = yini - 1;
 		dir = true;
-		i = 0.3f;
+		i = 0.7f;
 	}
 
 	// Update is called once per frame

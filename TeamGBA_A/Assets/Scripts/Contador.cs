@@ -25,6 +25,8 @@ public class Contador : MonoBehaviour {
 
 	int nochesPasadas;
 
+	public CanvasGroup pausa;
+
 	// Use this for initialization
 	void Start () {
 		p = GameObject.Find ("Player").GetComponent<Player>();
@@ -126,9 +128,52 @@ public class Contador : MonoBehaviour {
 					}
 					tiempoRestante_aux = tiempoRestante;
 				}
+
+		if (Input.GetKeyDown (KeyCode.P)) {
+
+			pausar ();
+		}
 	}
 
 	public bool getEsNoche(){
 		return esNoche;
+	}
+
+
+	public void pausar() {
+
+		Debug.Log ("Entro en pausa");
+
+		if (Time.timeScale > 0) {
+
+			Debug.Log ("pausa");
+			Time.timeScale = 0;
+
+			pausa.alpha = 1;
+			pausa.blocksRaycasts = true;
+			pausa.interactable = true;
+
+		}
+		else if (Time.timeScale == 0) {
+
+			Debug.Log ("restart");
+			Time.timeScale = 1;
+
+			pausa.alpha = 0;
+			pausa.blocksRaycasts = false;
+			pausa.interactable = false;
+		}
+	}
+
+	public void volverMenu() {
+
+		Debug.Log ("al menu");
+		Time.timeScale = 1;
+		pausa.alpha = 0;
+		pausa.blocksRaycasts = false;
+		pausa.interactable = false;
+		Application.LoadLevel ("MainScene");
+
+
 	}
 }
